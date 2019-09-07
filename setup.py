@@ -13,11 +13,11 @@ from setuptools import find_packages, setup, Command
 
 # Package meta-data.
 NAME = 'pyhotup'
-DESCRIPTION = 'My short description for my project.'
+DESCRIPTION = 'reload module and hot update the module\'s objects in Python.'
 URL = 'https://github.com/enjoypi/pyhotup'
 EMAIL = 'dev@onlyzf.com'
 AUTHOR = 'Fan Zhou'
-REQUIRES_PYTHON = '>=3.6.0'
+REQUIRES_PYTHON = '>=3.7.0'
 VERSION = '0.1.0'
 
 # What packages are required for this module to be executed?
@@ -113,16 +113,13 @@ setup(
     install_requires=REQUIRED,
     extras_require=EXTRAS,
     include_package_data=True,
-    license='MIT',
+    license='Apache',
     classifiers=[
         # Trove classifiers
         # Full list: https://pypi.python.org/pypi?%3Aaction=list_classifiers
-        'License :: OSI Approved :: MIT License',
+        'License :: OSI Approved :: Apache Software License',
         'Programming Language :: Python',
-        'Programming Language :: Python :: 3',
-        'Programming Language :: Python :: 3.6',
-        'Programming Language :: Python :: Implementation :: CPython',
-        'Programming Language :: Python :: Implementation :: PyPy'
+        'Programming Language :: Python :: 3 :: Only',
     ],
     # $ setup.py publish support.
     cmdclass={
