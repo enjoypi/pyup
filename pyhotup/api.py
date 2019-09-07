@@ -1,4 +1,3 @@
-
 def reload(module_name, class_name):
     def get_class(mod, classname):
         import inspect
@@ -35,6 +34,7 @@ def reload_module(module_name):
 
     import importlib
     new_module = importlib.reload(module)
+    print('module', module_name, 'reloaded')
     new_classes = get_classes(new_module)
 
     import gc
@@ -42,7 +42,8 @@ def reload_module(module_name):
         _class = obj.__class__
         if _class and (_class.__name__ in old_classes):
             obj.__class__ = new_classes[_class.__name__]
-            print(_class.__name__, 'reloaded')
+            print('<{0}.{1} object at {2}> update'.format(
+                _class.__module__, _class.__name__, hex(id(obj))))
 
 
 def get_classes(module):
@@ -52,5 +53,3 @@ def get_classes(module):
         if inspect.isclass(_class):
             classes[class_name] = _class
     return classes
-
-
