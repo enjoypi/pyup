@@ -30,8 +30,6 @@ def reload_module(module_name):
     import sys
     module = sys.modules[module_name]
 
-    old_classes = get_classes(module)
-
     import importlib
     new_module = importlib.reload(module)
     print('module', module_name, 'reloaded')
@@ -39,11 +37,15 @@ def reload_module(module_name):
 
     import gc
     for obj in gc.get_objects():
-        _class = obj.__class__
-        if _class and (_class.__name__ in old_classes):
-            obj.__class__ = new_classes[_class.__name__]
-            print('<{0}.{1} object at {2}> update'.format(
-                _class.__module__, _class.__name__, hex(id(obj))))
+        old_class = obj.__class__
+        class_name = old_class.__name__
+        if old_class and (class_name in new_classes):
+            new_class = new_classes[class_name]
+            if old_class == new_class:
+                continue
+            obj.__class__ = new_class
+            print('object<{0}>.__class__({1}.{2}<{3}>) is updated to <{4}>'.
+                  format( hex(id(obj)), module_name, class_name, hex(id(old_class)), hex(id(new_class))))
 
 
 def get_classes(module):

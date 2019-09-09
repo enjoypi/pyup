@@ -12,9 +12,9 @@ from shutil import rmtree
 from setuptools import find_packages, setup, Command
 
 # Package meta-data.
-NAME = 'pyhotup'
+NAME = 'pyup'
 DESCRIPTION = 'reload module and hot update the module\'s objects in Python.'
-URL = 'https://github.com/enjoypi/pyhotup'
+URL = 'https://github.com/enjoypi/pyup'
 EMAIL = 'dev@onlyzf.com'
 AUTHOR = 'Fan Zhou'
 REQUIRES_PYTHON = '>=3.7.0'
